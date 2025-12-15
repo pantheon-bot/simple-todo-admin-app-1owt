@@ -20,6 +20,26 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Todo app features
+
+- Home page (`/`) to add todos, mark them done, and delete them (all changes persist to TiDB via Kysely).
+- Admin page (`/admin`) shows every todo with editing, filtering by status, and delete controls.
+
+## Admin access
+
+- Visit `/admin` and sign in with the admin password.
+- Password comes from `ADMIN_PASSWORD`; if unset, the default is `admin` (cookies keep you signed in).
+
+## Database migrations
+
+- Migrations live in `/migrations` as SQL files. Run all migrations with:
+
+  ```bash
+  npm run migrate
+  ```
+
+- The script loads environment variables with Next.js’ env loader and connects to TiDB over TLS using `DATABASE_URL`.
+
 ## Database Configuration
 
 This template uses TiDB Cloud Serverless with the following stack:
