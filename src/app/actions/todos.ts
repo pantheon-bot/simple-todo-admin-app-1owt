@@ -65,7 +65,7 @@ export async function deleteTodoAction(formData: FormData) {
 }
 
 export async function adminUpdateTodoAction(formData: FormData) {
-  assertAdmin();
+  await assertAdmin();
 
   const id = Number(formData.get("id"));
   const title = formData.get("title");

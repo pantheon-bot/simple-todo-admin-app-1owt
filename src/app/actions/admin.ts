@@ -19,13 +19,13 @@ export async function loginAdmin(formData: FormData) {
     redirect("/admin?error=invalid");
   }
 
-  startAdminSession();
+  await startAdminSession();
   revalidatePath("/admin");
   redirect("/admin");
 }
 
 export async function logoutAdmin() {
-  clearAdminSession();
+  await clearAdminSession();
   revalidatePath("/admin");
   redirect("/admin");
 }

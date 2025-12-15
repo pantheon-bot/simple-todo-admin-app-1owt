@@ -23,7 +23,7 @@ export default async function AdminPage({
 }: {
   searchParams?: SearchParams;
 }) {
-  const adminSignedIn = isAdmin();
+  const adminSignedIn = await isAdmin();
   const statusParam =
     typeof searchParams?.status === "string" ? searchParams.status : "all";
   const filterStatus =

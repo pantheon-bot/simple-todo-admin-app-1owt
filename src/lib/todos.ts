@@ -1,4 +1,5 @@
 import db, { type DB } from '@/lib/db';
+import { type Selectable, type Updateable } from 'kysely';
 
 export interface Todo {
   id: number;
@@ -9,7 +10,7 @@ export interface Todo {
   updated_at: Date;
 }
 
-function toTodo(row: DB['todos']): Todo {
+function toTodo(row: Selectable<DB['todos']>): Todo {
   return {
     ...row,
     completed: Boolean(row.completed),
@@ -67,7 +68,7 @@ export async function updateTodo(
   id: number,
   updates: Partial<Pick<Todo, 'title' | 'description' | 'completed'>>,
 ) {
-  const payload: Partial<DB['todos']> = {};
+  const payload: Partial<Updateable<DB['todos']>> = {};
 
   if (typeof updates.title === 'string') {
     payload.title = updates.title;
